@@ -16,8 +16,7 @@ const create = (req, res) => {
 
 const store = async (req, res) => {
   const result = await service.store(req.body, req.file);
-  // res.send(result);
-   res.redirect('/users');
+  res.redirect('/users');
 };
 
 

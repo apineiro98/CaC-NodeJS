@@ -1,36 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Users</title>
-  <link 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"  
-  />
-</head>
-<body>
-  <%- include('./partials/header.ejs') %>
-  <main class="container">
-    <h1>Usuarios</h1>
-    <a href="/users/create" class="btn btn-sm btn-primary">Create</a>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Email</th>
-          <th>Imagen</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% rows.forEach(user => { %>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <link 
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+      rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"  
+    />
+  </head>
+  <body>
+    <%- include('./partials/header.ejs') %>
+    <main class="container">
+      <h1>Usuarios</h1>
+      <a href="/users/create" class="btn btn-sm btn-primary">Create</a>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Imagen</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rows.forEach(user => { %>
           <tr>
             <td><%= user.id %></td>
             <td><%= user.email %></td>
             <td>
               <img
-                src="../public/uploads/<%= user.image || 'default.png' %>"
+                src="uploads/<%= user.image || 'default.png' %>"
                 width="100"
                 alt="Foto perfil"
               />
@@ -38,11 +38,11 @@
             <td></td>
           </tr>
           <% }) %>
-      </tbody>
-    </table>
-  </main>
-  <footer class="text-center">
-    <small>CaC $copy; 2023</small>
-  </footer>
-</body>
+        </tbody>
+      </table>
+    </main>
+    <footer class="text-center">
+      <small>CaC $copy; 2023</small>
+    </footer>
+  </body>
 </html>

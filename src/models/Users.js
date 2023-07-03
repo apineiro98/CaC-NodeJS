@@ -25,17 +25,17 @@ const findId = async (params) => {
 
 const store = async (body, file) => {
   console.log(file);
-  let image = null;
-  if (file) {
-    image = file.filename;
-  }
+  // let image = null;
+  // if (file) {
+  //   image = file.filename;
+  // }
   
-  const { email, password } = body;
+  const { email, password, image } = body;
   try {
     const [rows] = await conn.query('INSERT INTO `users` SET ?', {
        email,
        password,
-       image,
+       image
     });
     return rows;
   } catch (error) {
