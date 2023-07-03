@@ -2,10 +2,12 @@
 
 //! Express
 const express = require('express');
+
 const router = express.Router();
 
 //! Multer
 const multer = require('multer');
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, "./src/public/uploads"),
   filename: (req, file, cb) => cb(null, Date.now() + "_" + file.originalname)
@@ -16,6 +18,7 @@ const uploadFile = multer({ storage });
 //! Express-Validator
 // En la ruta require solo el body.
 const { body } = require('express-validator');
+
 const validateInput = require('../middlewares/validator');
 
 //! Dentro del array estan todos los elementos con cada una de las validaciones.
@@ -45,6 +48,7 @@ const controller = require('../controllers/usersController');
 //! Routers
 //Create
 router.get('/create', controller.create);
+
 //Store
 router.post(
   '/',
@@ -57,8 +61,5 @@ router.post(
 router.get('/', controller.index);
 router.get('/:id', controller.show);
 
-
-
-
-
+//! Exports
 module.exports = router;

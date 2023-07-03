@@ -1,6 +1,5 @@
 const service = require('../services/usersServices');
 
-
 const index = async (req, res) => {
   const rows = await service.findAll();
   res.render('users', { rows });
