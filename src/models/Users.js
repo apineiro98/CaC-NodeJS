@@ -24,16 +24,19 @@ const findId = async (params) => {
 };
 
 const store = async (body, file) => {
-  const { email, password } = body;
-  // const { filename } = file;
+  console.log(file);
   let image = null;
-  
-  if(file) {
+  if (file) {
     image = file.filename;
   }
-
+  
+  const { email, password } = body;
   try {
-    const [rows] = await conn.query('INSERT INTO `users` SET ?', { email, password, image });
+    const [rows] = await conn.query('INSERT INTO `users` SET ?', {
+       email,
+       password,
+       image,
+    });
     return rows;
   } catch (error) {
     if (error.code === "ER_DUP_ENTRY") {
