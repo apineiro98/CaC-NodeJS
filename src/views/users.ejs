@@ -25,18 +25,18 @@
         </thead>
         <tbody>
           <% rows.forEach(user => { %>
-          <tr>
-            <td><%= user.id %></td>
-            <td><%= user.email %></td>
-            <td>
-              <img
-                src="uploads/<%= user.image || 'default.png' %>"
-                width="100"
-                alt="Foto perfil"
-              />
-            </td>
-            <td></td>
-          </tr>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td>
+                <img
+                  src="uploads/<%= user.image || 'default.png' %>"
+                  width="100"
+                  alt="Foto perfil"
+                />
+              </td>
+              <td></td>
+            </tr>
           <% }) %>
         </tbody>
       </table>
