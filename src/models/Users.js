@@ -2,6 +2,7 @@ const { conn } = require('../config/db');
 
 const findAll = async () => {
   try {
+    //! Se utiliza await para esperar a que la consulta se resuelva.
     const [rows] = await conn.query('SELECT * FROM `users`');
     return rows;
   } catch (error) {
@@ -24,18 +25,20 @@ const findId = async (params) => {
 };
 
 const store = async (body, file) => {
-  console.log(file);
+  // console.log(file);
+  // console.log(body);
   let image = null;
+
   if (file) {
     image = file.filename;
   }
-  
-  const { email, password } = body;
+ 
+  const { email, password} = body;
   try {
     const [rows] = await conn.query('INSERT INTO `users` SET ?', {
        email,
        password,
-       image
+       image,
     });
     return rows;
   } catch (error) {

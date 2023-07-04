@@ -24,6 +24,6 @@ const store = async (req, res) => {
 module.exports = {
   index,
   show,
-  store,
   create,
+  store,
 }

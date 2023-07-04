@@ -52,8 +52,7 @@ router.get('/create', controller.create);
 //Store
 router.post(
   '/',
-  userValidations,
-  validateInput,
+  
   uploadFile.single("image"),
   controller.store
 );
