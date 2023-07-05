@@ -1,5 +1,8 @@
 const model = require('../models/Users');
 
+//! 
+const bcryptjs = require('bcryptjs');
+
 const findAll = async () => {
   return model.findAll();
 };
@@ -16,6 +19,11 @@ const findId = async (params) => {
 };
 
 const store = async (body, file) => {
+  //! Llega en texto plano, se encripta y llega al model encriptado.
+  //! Params: string y cantidad de encriptados.
+  body.password = await bcryptjs.hash(body.password, 8);
+
+
   const result = await model.store(body, file);
   
   if(result.affectedRows > 0) {

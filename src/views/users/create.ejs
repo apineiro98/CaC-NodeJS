@@ -24,7 +24,7 @@
         error.forEach(error=> {
           if(error.path == 'email') {
             %>
-              <p><%= error.msg %> </p>
+              <p class="alert-danger"><%= error.msg %> </p>
             <%
           }
         })
