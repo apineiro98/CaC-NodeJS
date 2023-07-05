@@ -40,20 +40,15 @@ const userValidations = [
     // .isLength({ min: 6 })
 ];
 
-
 //! Controllers
 const controller = require('../controllers/usersController');
 
-
-//! Routers
-//Create
+//! Routers - Create and Store
 router.get('/create', controller.create);
-
-//Store
 router.post(
   '/',
-  
-  uploadFile.single("image"),
+  uploadFile.single("image"), //Para que valide tiene que subirse primero el archivo.
+  userValidations,
   controller.store
 );
 
