@@ -5,6 +5,9 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+//! Method-Override
+const methodOverride = require('method-override');
+
 //! Cookies-Session
 const session = require('cookie-session');
 
@@ -30,6 +33,7 @@ app.use(express.static('public'));
 
 //!
 app.use(express.urlencoded({ extended: true })); 
+app.use(methodOverride('_method'));
 
 //! Middleware
 const isLogin = (req, res, next) => {
@@ -51,12 +55,17 @@ app.get('/', (req, res) => {
 //! Routes
 //Users
 app.use('/users', isLogin, require('./src/routes/usersRouter'));
-//login
+//Roles
+app.use('/roles', isLogin, require('./src/routes/rolesRouter'));
+//
 app.use('/', require('./src/routes/authRouter'));
+
 
 
 
 //!
 const PORT = process.env.PORT || 3000;
 
+//! La forma de iniciarse el servidor en express es asincrona.
+//! Por eso se lo ejecuta dentro del callback.
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

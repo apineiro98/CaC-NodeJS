@@ -1,0 +1,36 @@
+<% if (typeof error !='undefined' ) { %> <% error.forEach(error=> { %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error.msg %>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="alert"
+      ria-label="Close"
+  ></button>
+</div>
+<% }) %> <% } %>
+
+<h1>Crear Rol</h1>
+
+<form action="/roles" method="post">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name: </label>
+    <input 
+      type="text"
+      class="form-control"
+      id="name"
+      name="name"
+      value="<%= values.name %>"
+    />
+    <% if (typeof error !='undefined' ) { 
+        error.forEach(error=> {
+          if(error.path == 'name') {
+            %>
+              <p class="alert-danger"><%= error.msg %> </p>
+            <%
+          }
+        })
+    }%>
+  </div>
+  <button type="submit" class="btn btn-primary">Crear</button>
+</form>
