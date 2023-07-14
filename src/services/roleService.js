@@ -1,11 +1,11 @@
-const model = require('../models/Roles');
+const model = require('../models/Role');
 
 const findAll = async () => {
   return model.findAll();
 };
 
-const findId = async (params) => {
-  const rows = await model.findId(params)
+const findOne = async (params) => {
+  const rows = await model.findOne(params)
   
   if(rows.length > 0) {
     return rows[0]
@@ -49,7 +49,7 @@ const destroy = async (params) => {
 
 module.exports = {
   findAll,
-  findId,
+  findOne,
   store,
   update,
   destroy,

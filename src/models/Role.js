@@ -12,7 +12,7 @@ const findAll = async () => {
   }
 };
 
-const findId = async (params) => {
+const findOne = async (params) => {
   const { id } = params;
   try {
     const [rows] = await conn.query('SELECT * FROM `roles` WHERE ?', { id });
@@ -89,7 +89,7 @@ const destroy = async (params) => {
 
 module.exports = {
   findAll,
-  findId,
+  findOne,
   store,
   update,
   destroy,

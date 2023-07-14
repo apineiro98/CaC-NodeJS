@@ -1,14 +1,4 @@
-<% if (typeof error !='undefined' ) { %> <% error.forEach(error=> { %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <%= error.msg %>
-    <button
-      type="button"
-      class="btn-close"
-      data-bs-dismiss="alert"
-      aria-label="Close"
-    ></button>
-  </div>
-<% }) %> <% } %>
+<%- include('../partials/errors') %>
 
 <h1>Iniciar Sesion</h1>
 

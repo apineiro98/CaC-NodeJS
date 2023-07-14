@@ -1,0 +1,20 @@
+
+<div class="container">
+  <%- include('../partials/errors') %>
+  
+  <h1>Crear Role</h1>
+
+  <form action="/admin/roles" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        value="<%= values.name %>"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>

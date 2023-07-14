@@ -46,22 +46,35 @@ const isLogin = (req, res, next) => {
 };
 
 
-//! First: req Second: res.
+//! Public
 app.get('/', (req, res) => {
   res.render('index');
 });
 
+app.use("/profiles", require("./src/routes/profileRouter"));
 
-//! Routes
-//Users
-app.use('/users', isLogin, require('./src/routes/usersRouter'));
-//Roles
-app.use('/roles', isLogin, require('./src/routes/rolesRouter'));
-//
-app.use('/', require('./src/routes/authRouter'));
+//! Auth
+app.use("/", require("./src/routes/authRouter"));
 
+//! Private
+app.get("/admin", isLogin, (req, res) => {
+  res.render("admin/index", { layout: "./layouts/private" });
+});
 
+app.use("/admin/users", isLogin, require("./src/routes/admin/userRouter"));
+app.use("/admin/roles", isLogin, require("./src/routes/admin/roleRouter"));
 
+// app.use(
+//   "/admin/products",
+//   isLogin,
+//   require("./src/routes/admin/productRouter")
+// );
+
+// app.use(
+//   "/admin/categories",
+//   isLogin,
+//   require("./src/routes/admin/categoryRouter")
+// );
 
 //!
 const PORT = process.env.PORT || 3000;
