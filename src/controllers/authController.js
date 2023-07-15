@@ -56,7 +56,7 @@ const postLogin = async (req, res) => {
   } else {
     req.session.user_id = rows[0].id;
 
-    const role = await service.hasRole({ user_id: rows[0].id, role_id: 69 }); // Role Admin
+    const role = await service.hasRole({ user_id: rows[0].id, role_id: 65 }); // Role Admin
 
     if (role.length > 0) {
       return res.redirect("/admin");
