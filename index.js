@@ -64,17 +64,17 @@ app.get("/admin", isLogin, (req, res) => {
 app.use("/admin/users", isLogin, require("./src/routes/admin/userRouter"));
 app.use("/admin/roles", isLogin, require("./src/routes/admin/roleRouter"));
 
-// app.use(
-//   "/admin/products",
-//   isLogin,
-//   require("./src/routes/admin/productRouter")
-// );
+app.use(
+  "/admin/products",
+  isLogin,
+  require("./src/routes/admin/productRouter")
+);
 
-// app.use(
-//   "/admin/categories",
-//   isLogin,
-//   require("./src/routes/admin/categoryRouter")
-// );
+app.use(
+  "/admin/categories",
+  isLogin,
+  require("./src/routes/admin/categoryRouter")
+);
 
 //!
 const PORT = process.env.PORT || 3000;
