@@ -72,5 +72,11 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+//! Reestablecer Pass.
+router.get("/forgot", controller.forgot);
+router.post("/forgot", forgotValidations, controller.postForgot);
+
+router.get("/reset/:id/:token", controller.reset);
+router.post("/reset", resetValidations, controller.postReset);
 
 module.exports = router;
