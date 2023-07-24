@@ -43,18 +43,20 @@ const postLogin = async (req, res) => {
     req.body.email,
   ]);
 
+  
   if(rows.length === 0) {
     res.render('auth/login', {
       values: req.body,
       error: [{ msg: 'El correo y/o contraseña son incorrectos'}],
       layout: 'layouts/auth',
     });
-  } else if (!bcryptjs.compare(req.body.password, rows[0].password)) {
+  } else if (!await (bcryptjs.compare(req.body.password, rows[0].password))) {
     res.render('auth/login', {
       values: req.body,
       error: [{ msg: 'El correo y/o contraseña son incorrectos'}],
       layout: 'layouts/auth',
     });
+
   } else {
     req.session.user_id = rows[0].id;
 
